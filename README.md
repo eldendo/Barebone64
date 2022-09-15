@@ -63,6 +63,7 @@ Now that we have a REPL it's very simple to add an interpreter for a lexical lan
 A lexical language is nothing more than a list of words the system understands.
 Again the code is very simple: The execute part of the REPL calls the interpreter subroutine.
 The interpreter is nothing more than a list of 'IF THEN' instructions. If no word matches, an error string (ms$) defaulting to 'ok.' is set to 'SYNTAX ERROR'. This string is used as text in the print part of the REPL. 
+
 ---
 ```basic
 5 print chr$(147);chr$(14);:rem clearscreen/charset 2
@@ -92,8 +93,8 @@ The interpreter is nothing more than a list of 'IF THEN' instructions. If no wor
 
 <hr style="page-break-after: always;"/>
 
-#Chapter 3
-##A RPN calculator (part 1)
+# Chapter 3
+## A RPN calculator (part 1)
 
 Now that we made a REPL and an interpreter, let's do something with it.
 In this chapter we will make a stack based calculator.
@@ -111,18 +112,19 @@ At last we need a way to put numeric values on the stack. A simple way is to pre
 Remark that here we will test for a stack overflow before putting the value on the stack.
 
 
-Test out the program. Remember you are working with a stack: 
-4*(5+6) should be entered 4 5 6 + * . 
+Test out the program. Remember you are working with a stack:  
+`4*(5+6)` should be entered `4 5 6 + * .` 
 This is called post fix notation or Reverse Polish Notation (RPN). Users of a HP calculator will recognise the system. 
 
 Remark that you have to put one entry a line:  
+```
 4 (return)  
 5 (return)  
 6 (return)  
 + (return)  
 * (return)  
 . (return)  
-
+```
 In the next chapter we will make it possible to put this on one line.
 
 ---
