@@ -63,7 +63,8 @@ The following piece of code is quite comprehensible:
 Now that we have a REPL it's very simple to add an interpreter for a lexical language.
 A lexical language is nothing more than a list of words the system understands.
 Again the code is very simple: The execute part of the REPL calls the interpreter subroutine.
-The interpreter is nothing more than a list of 'IF THEN' instructions. If no word matches, an error string (ms$) defaulting to 'ok.' is set to 'SYNTAX ERROR'. This string is used as text in the print part of the REPL. 
+The interpreter is nothing more than a list of 'IF THEN' instructions. If no word matches, an error string (ms$) defaulting to 'ok.' is set to 'SYNTAX ERROR'. This string is used as text in the print part of the REPL.
+
 ---
 ```basic
 5 print chr$(147);chr$(14);:rem clearscreen/charset 2
