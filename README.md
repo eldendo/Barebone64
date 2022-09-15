@@ -1,3 +1,4 @@
+
 # barebone64
 ## (c)2022 by ir. Marc Dendooven
 ---
@@ -13,6 +14,7 @@ But it is my goal here to restart my Commodore adventures where I started them i
 Of course it is not necessary to use a real Commodore. An emulator is perfect replacement. I will use VICE. Writing code can be done in a simple editor, using cut & paste in vice. 
 
 Retro computing is not only a hobby, it is also a learning method. It shows certain techniques and principles which are often neglected in modern computer science courses. As a former instructor in computer science, I will focus on the educative aspects while building this environment.   
+
 
 
 
@@ -54,3 +56,37 @@ The following piece of code is quite comprehensible:
 ```
 
 <hr style="page-break-after: always;"/>
+
+# Chapter 2
+## The interpreter
+
+Now that we have a REPL it's very simple to add an interpreter for a lexical language.
+A lexical language is nothing more than a list of words the system understands.
+Again the code is very simple: The execute part of the REPL calls the interpreter subroutine.
+The interpreter is nothing more than a list of 'IF THEN' instructions. If no word matches, an error string (ms$) defaulting to 'ok.' is set to 'SYNTAX ERROR'. This string is used as text in the print part of the REPL. 
+---
+```basic
+5 print chr$(147);chr$(14);:rem clearscreen/charset 2
+10 print " +------------------------------------+"
+20 print " !            Barebone64              !"
+30 print " !    (c)2022 ir. Marc Dendooven      !"
+40 print " !         H2 the Interpreter         !"
+50 print " +------------------------------------+"
+60 print
+
+900 rem *** repl ***
+910 input w$: rem read
+920 gosub 1000: rem execute
+930 print ms$: rem print
+940 goto 900: rem loop
+
+1000 rem *** interpreter ***
+1010 ms$="ok."
+1020 if w$="bye" then print "RETURNING TO BASIC.": end
+1030 if w$="help" then print "Sorry no help yet...": return
+1040 if w$="hello" then print "Hello to you too sir...": return
+1200 ms$="SYNTAX ERROR."
+1210 return
+
+```
+
