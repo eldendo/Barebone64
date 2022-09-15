@@ -1,7 +1,7 @@
-#barebone64
-##(c)2022 by ir. Marc Dendooven
+# barebone64
+## (c)2022 by ir. Marc Dendooven
 ---
-#Introduction
+# Introduction
 The Commodore 64 was, and is, a great computer. I had a lot of fun with it but never explored it to its limits. Now that I have retired I really want to do the things I always wanted to do with the c64: building an environment that is better than the native BASIC environment, without using modern tools.
 
 The c64 was shipped in a hurry... the BASIC interpreter was the same one used for the older PET computers which lacked the graphic and sound possibilities of the 64. In contrast to other computers of the '80 one can not simply draw a point or a line to the screen. There is no software onboard to do that. Almost all hardware has to be accessed using memory mapped IO. That means reading and writing to the IO registers of the hardware using the basic commands PEEK and POKE. But this is also an opportunity: one is obliged to learn how the hardware works in order to use it. And if you want to do something at a reasonable speed, you are almost obliged to learn machine language. Every step learning opens a complete new world of possibilities. 
@@ -20,7 +20,7 @@ Let the games begin...
 
 <hr style="page-break-after: always;"/>
 
-#Chapter 1
+# Chapter 1
 ## The REPL
 
 Let's start with a simple command line environment: a REPL.
@@ -37,7 +37,7 @@ The user is presented with an input prompt, the input is evaluated or executed. 
 The following piece of code is quite comprehensible:
 
 ---
-```
+```basic
 5 print chr$(147);chr$(14);:rem clearscreen/charset 2
 10 print " +------------------------------------+"
 20 print " !            Barebone64              !"
