@@ -12,7 +12,6 @@ But it is my goal here to restart my Commodore adventures where I started them i
 
 Of course it is not necessary to use a real Commodore. An emulator is perfect replacement. I will use VICE. Writing code can be done in a simple editor, using cut & paste in vice. 
 
-Retro computing is not only a hobby, it is also a learning method. It shows certain techniques and principles which are often neglected in modern computer science courses. As a former instructor in computer science, I will focus on the educative aspects while building this environment.   
 
 Let the games begin...
 
