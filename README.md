@@ -14,10 +14,9 @@ Of course it is not necessary to use a real Commodore. An emulator is perfect re
 
 Retro computing is not only a hobby, it is also a learning method. It shows certain techniques and principles which are often neglected in modern computer science courses. As a former instructor in computer science, I will focus on the educative aspects while building this environment.   
 
-
-
-
 Let the games begin...
+
+![screenshot](./barebone64.png)
 
 <hr style="page-break-after: always;"/>
 
