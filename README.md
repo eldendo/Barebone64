@@ -98,7 +98,7 @@ The interpreter is nothing more than a list of 'IF THEN' instructions. If no wor
 Now that we made a REPL and an interpreter, let's do something with it.
 In this chapter we will make a stack based calculator.
 
-A stack is a FIFO (First In First Out) data structure: Data is entered at the top of the stack, and removed again from the top. Compare it with a stack of books. You put one on the top, and that's the first one which has to be removed when taking books from the stack. In basic we can implement a stack whith an array and a variable (the Stack Pointer - SP) which points to the top of the stack.
+A stack is a LIFO (Last In First Out) data structure: Data is entered at the top of the stack, and removed again from the top. Compare it with a stack of books. You put one on the top, and that's the first one which has to be removed when taking books from the stack. In basic we can implement a stack whith an array and a variable (the Stack Pointer - SP) which points to the top of the stack.
 
 First we extend our language with the arithmic operators '+','-','*' and '/'. They take the two top elements from the stack, execute the operation on them, and put the result back on the top of the stack. Remark that first is checked if there are two elements present on the stack. If not, an error condition (the variable ec) is set. 
 
