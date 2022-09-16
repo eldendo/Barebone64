@@ -35,32 +35,32 @@
 1640 if w$="hello" then print "Hello to you too sir...":return
 
 1700 rem ** if the word is unknown, a value is presumed. **
-1710 if sp>=ls then ec=2:goto 9500: rem check for stack overflow
+1710 if sp>=ls then ec=2:return: rem check for stack overflow
 1720 sp=sp+1:s(sp)=val(w$)
 1730 return
 
 2100 rem *** '+' (a b -> a+b) ***
-2110 if sp<1 then sp=-1:ec=1:goto 9500
+2110 if sp<1 then sp=-1:ec=1:return
 2120 sp=sp-1:s(sp)=s(sp)+s(sp+1):
 2130 return
 
 2150 rem *** '-' (a b -> a-b) ***
-2160 if sp<1 then sp=-1:ec=1:goto 9500
+2160 if sp<1 then sp=-1:ec=1:return
 2170 sp=sp-1:s(sp)=s(sp)+s(sp+1):
 2180 return
 
 2200 rem *** '*' (a b -> a*b) ***
-2210 if sp<1 then sp=-1:ec=1:goto 9500
+2210 if sp<1 then sp=-1:ec=1:return
 2220 sp=sp-1:s(sp)=s(sp)*s(sp+1):
 2230 return
 
 2250 rem *** '/' (a b -> a/b) ***
-2260 if sp<1 then sp=-1:ec=1:goto 9500
+2260 if sp<1 then sp=-1:ec=1:return
 2270 sp=sp-1:s(sp)=s(sp)/s(sp+1):
 2280 return
 
 2300 rem *** '.' (a -> ) ***
-2310 if sp<0 then sp=-1:ec=1:goto 9500
+2310 if sp<0 then sp=-1:ec=1:return
 2320 print s(sp):sp=sp-1
 2330 return
 
