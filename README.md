@@ -313,6 +313,7 @@ By adding this snippet to the RPN calculater, we can now enter a calculation on 
 
 2250 rem *** '/' (a b -> a/b) ***
 2260 if sp<1 then sp=-1:ec=1:return
+2265 if s(sp)=0 then sp=-1:ec=3: return: rem div by zero
 2270 sp=sp-1:s(sp)=s(sp)/s(sp+1):
 2280 return
 
@@ -325,6 +326,7 @@ By adding this snippet to the RPN calculater, we can now enter a calculation on 
 5010 if ec=0 then print "ok."
 5020 if ec=1 then print "ERROR: stack underflow."
 5030 if ec=2 then print "ERROR: stack overflow."
+5035 if ec=3 then print "ERROR: division by zero"
 5040 gosub 6000: rem print the stack
 5050 return
 
