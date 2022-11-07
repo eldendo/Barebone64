@@ -62,9 +62,10 @@
 1220 if w$="external" then t=0:goto 3400: rem add function to dictionary
 1230 if w$="_" then 4000: rem compiler
 1620 if w$="bye" then print "RETURNING TO BASIC.":close 50:end
-1630 if w$="help" then print "Sorry no help yet...":return
+1630 if w$="help" then print "Try 'words'.":return
 1640 if w$="hello" then print "Hello to you too sir...":return
 1650 if w$="reset" then sys 64738
+1660 if w$="words" then 9200
 1700 rem * if the word is unknown, a value is presumed. *
 1720 v=val(w$):gosub 7000
 1730 return
@@ -99,8 +100,8 @@
 2840 return
 
 2900 rem *** save ***
-2910 gosub 7100:if ec<>0 then return
-2920 open 8,8,8,str$(v)+",s,w"
+2910 gosub 8000:rem get filename
+2920 open 8,8,8,w$+",s,w"
 2930 for i=0 to ll
 2933   if l$(i)="" then l$(i)=" " 
 2935   print#8,l$(i)+" "
@@ -109,16 +110,16 @@
 2950 return
 
 3000 rem *** load ***
-3010 gosub 7100:if ec<>0 then return
-3020 open 8,8,8,str$(v)+",s,r"
+3010 gosub 8000:rem get filename
+3020 open 8,8,8,w$+",s,r"
 3030 i=0
 3035 input#8,l$(i):i=i+1:if st=0 then 3035
 3040 close 8
 3050 return
 
 3100 rem *** scratch ***
-3110 gosub 7100:if ec<>0 then return
-3120 open 8,8,15,"s0:"+str$(v)
+3110 gosub 8000: rem get filename
+3120 open 8,8,15,"s0:"+w$
 3140 close 8
 3150 return
 
@@ -134,8 +135,8 @@
 3270 goto 3220
 
 3300 rem *** exec ***
-3310 gosub 7100:if ec<>0 then return
-3320 open 8,8,8,str$(v)+",s,r"
+3310 gosub 8000: rem get filename
+3320 open 8,8,8,w$+",s,r"
 3330 id=8
 3340 return
 
@@ -171,7 +172,7 @@
 4820 if w$=";" then li$="":return
 4825 if w$="" then gosub 800:goto 4810
 4830 hh$=w$:gosub 8300:if ec<>0 then print"*";ec:return
-4835 print hh
+4835 print hh;
 4840 v=hh:gosub 4900: rem emit
 4850 goto 4810
 
@@ -204,6 +205,8 @@
 7000 rem *** push v on stack ***
 7005 if ec<>0 then return
 7010 if sp>=ss-1 then ec=2:return: rem check for stack overflow
+7015 if v<0 then v=2^16+v: rem trunck on 16 bits
+7016 if v>=2^16 then v=v-2^16: rem trunck on 16 bits
 7020 sp=sp+1:poke ls+sp,fn lo(v):poke hs+sp,fn hi(v)
 7030 return
 
@@ -226,7 +229,7 @@
 7650 goto 7620
 
 8000 rem *** string scanner ***
-8010 rem * get first word in li$ to w$ *
+8010 rem * get first word of li$ to w$ *
 8020 rem * and leave rest of string in li$ *
 8100 i=1:l=len(li$):w$=""
 8110 rem first skip leading blanks
@@ -260,5 +263,12 @@
 9080 cp=cb: rem code pointer
 9100 return
 
-
+9200 rem *** list all words ***
+9210 print "BUILD IN WORDS: +,-,*,/,.,l,r,d,i,save,load,scratch,files,";
+9220 print "new,exec,constant,external,_,bye,help,hello,reset,words"
+9230 print "DICTIONARY WORDS:";
+9235 if dp<0 then print "none":return
+9240 for i=0 to dp: print di$(i);",";:next
+9245 print
+9250 return
 
